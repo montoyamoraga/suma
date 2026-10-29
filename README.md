@@ -20,7 +20,47 @@ Documentación, esquemático, placa y Bill of materials: <https://piruetas.xyz/s
 
 ## Revisiones
 
-- `v0.1 rev-a`: diseñada en octubre 2026.
+- `v0.1 rev-a`: diseñada y fabricada en octubre 2026. No funciona tal como viene armada (ver errores abajo).
+- `v0.1 rev-b`: en desarrollo, corrige las huellas de los diodos y de los potenciómetros.
+
+### Errores conocidos de rev-a
+
+El esquemático está bien; los errores están en las huellas.
+
+- **Diodos D1 y D2 montados al revés.** El símbolo tiene el cátodo (K) en el pin 1, pero la serigrafía de la huella `SOD-123FL_L2.8-W1.8-LS3.7-R-RD` marca el cátodo en el pad 2, y JLCPCB los montó siguiendo la serigrafía. Los diodos quedan en inverso, el TL072 solo recibe la corriente de fuga de los Schottky y los rieles caen a unos ±1.5 V en vez de ±11.7 V. Resultado: la salida sale muy baja (~1 Vpp en vez de 5 Vpp) y deformada.
+- **Potenciómetros al revés.** La huella `POT_TH_Alps_RK09K_Single_Vertical` tiene los pads 1 y 3 intercambiados respecto a la huella estándar de KiCad. Girando en sentido horario el cursor va hacia GND (silencio), y en antihorario hacia la entrada (volumen máximo).
+
+Para comprobarlo en una placa: con el módulo alimentado, medir el pin 8 y el pin 4 de U1 (o C1 y C2) respecto a GND. Si da ~±1-2 V en vez de ~±11.7 V, los diodos están al revés.
+
+Arreglo de las placas rev-a ya armadas:
+
+- Desoldar D1 y D2 y soldarlos girados 180°. Para probar rápido, también se pueden puentear con un cable (se pierde la protección contra polaridad inversa).
+- Los potenciómetros no tienen arreglo limpio: esas placas funcionan al revés (antihorario = más volumen).
+
+### Simulación
+
+rev-a y rev-b se pueden simular en KiCad (Inspeccionar → Simulador → Ejecutar). Los modelos están en `bibliotecas/spice/`: el TL072 (macro-modelo aproximado; para más precisión reemplazar por el modelo oficial de TI), el 1N5817, y modelos de los conectores para no agregar fuentes al esquemático. J4 se comporta como una fuente de ±12 V, J1-J3 como osciladores senoidales (J1: 5 Vpp a 220 Hz; J2 y J3 en 0 V; se cambian con `amplitud` y `frecuencia` en Sim.Params) y J5-J6 como la entrada de 100k de otro módulo. La posición de cada potenciómetro se cambia con `pos` en Sim.Params (1 = horario completo, según el esquemático).
+
+La simulación muestra el circuito tal como está en el esquemático (que funciona: 4.95 Vpp con el potenciómetro al máximo). Para reproducir cómo quedó armada rev-a, cambiar Sim.Pins de D1 y D2 a `1=A 2=K` e invertir `pos` en los potenciómetros.
+
+El PCB de rev-a no se actualizó con los campos de simulación, para que siga siendo igual a lo fabricado. Por eso el DRC con paridad de esquemático muestra 12 avisos de campos `Sim.*` faltantes, que no afectan al circuito.
+
+### Pendientes para rev-b
+
+Ya está hecho en [hardware/suma-v-0-rev-b](./hardware/suma-v-0-rev-b):
+
+- Diodos: serigrafía espejada para que el cátodo quede en el pad 1 (K) y modelo 3D girado 180°. El cobre no cambia.
+- Potenciómetros: pads 1 y 3 intercambiados en la huella (biblioteca y placa), igual que la huella estándar de KiCad.
+
+Falta:
+
+- [ ] En pcbnew, rerutear la pista de entrada de RV1, RV2 y RV3: ahora tiene que llegar al pad derecho (x = 40.3 mm, pad 3) en vez del izquierdo (x = 35.3 mm, ahora GND). Después rellenar las zonas (B). Hasta hacerlo, el DRC marca cortos con GND en esos tres puntos.
+- [ ] Opcional: "Actualizar PCB desde esquemático" para copiar los campos de simulación a la placa.
+- [ ] Simular rev-b en KiCad antes de mandarla a fabricar.
+- [ ] Generar gerbers, BOM y CPL de rev-b (`hardware/suma-v-0-rev-b-fab` y `hardware/suma-v-0-rev-b-pcba`).
+- [ ] En el pedido de JLCPCB, revisar en la vista previa de montaje que la banda de cada diodo quede en el pad 1: lado del riel de +12 V en D1, lado del header en D2.
+- [ ] Actualizar [kicad-retrata.yml](./kicad-retrata.yml), la estructura del repositorio de este README y [docs](./docs) para que apunten a rev-b.
+- [ ] Revisar si otros módulos de popusintes usan estas mismas huellas de diodo y potenciómetro.
 
 ## Estructura del repositorio
 
