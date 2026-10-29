@@ -18,6 +18,19 @@ Generado a partir de `hardware/suma-v-0-rev-a/suma-v-0-rev-a.kicad_sch`.
 
 <!-- BOM_TABLE_START -->
 
+| Referencias | Cantidad | Valor | Huella | Descripción |
+| --- | --- | --- | --- | --- |
+| C1, C2 | 2 | 100n | suma-v-0-rev-a:C0805 | suma-v-0-rev-a:C |
+| D1, D2 | 2 | 1N5817W | suma-v-0-rev-a:SOD-123FL_L2.8-W1.8-LS3.7-R-RD | suma-v-0-rev-a:D_Schottky |
+| J1, J2, J3, J5, J6 | 5 | AudioJack2_SwitchT | suma-v-0-rev-a:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical | suma-v-0-rev-a:AudioJack2_SwitchT |
+| J4 | 1 | Conn_02x05_Odd_Even | suma-v-0-rev-a:IDC-Header_2x05_P2.54mm_Vertical | suma-v-0-rev-a:Conn_02x05_Odd_Even |
+| R1, R2, R3, R4, R5, R6 | 6 | 100k | suma-v-0-rev-a:R0805 | suma-v-0-rev-a:R |
+| R7, R8 | 2 | 1k | suma-v-0-rev-a:R0805 | suma-v-0-rev-a:R |
+| RV1, RV2, RV3 | 3 | A100k | suma-v-0-rev-a:POT_TH_Alps_RK09K_Single_Vertical | suma-v-0-rev-a:R_Potentiometer |
+| U1 | 1 | TL072 | suma-v-0-rev-a:SOIC-8_L4.9-W3.9-P1.27-LS6.0-BL | suma-v-0-rev-a:TL072 |
+
+22 componentes en total.
+
 <!-- BOM_TABLE_END -->
 
 ## Créditos
