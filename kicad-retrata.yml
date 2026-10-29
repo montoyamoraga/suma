@@ -1,0 +1,9 @@
+# Configuración de kicad-retrata (https://github.com/piruetasxyz/kicad-retrata).
+# Todas las rutas son relativas a la raíz del repositorio.
+carpeta-imagenes: docs/images
+
+# Para cambiar de revisión, actualizar "proyecto" (por ejemplo rev-a → rev-b).
+modulos:
+  - nombre: suma
+    proyecto: hardware/suma-v-0-rev-a/suma-v-0-rev-a
+    doc: docs/index.md
