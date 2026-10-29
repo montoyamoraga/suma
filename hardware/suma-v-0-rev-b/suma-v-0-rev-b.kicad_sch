@@ -2043,28 +2043,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text ".tran 10u 40m"
-		(exclude_from_sim no)
-		(at 25.4 190.5 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "b3141972-3b5a-4656-bff4-3efc025f9dcd")
-	)
-	(text "salida-invertida"
-		(exclude_from_sim no)
-		(at 186.69 142.494 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "06a1e65c-17ef-4159-907d-4f92ceec155b")
-	)
 	(text "entrada-tres"
 		(exclude_from_sim no)
 		(at 31.496 147.574 0)
@@ -2097,6 +2075,17 @@
 			(justify left)
 		)
 		(uuid "4ffa72ed-dcd0-49bc-9fc9-c129b7b717e4")
+	)
+	(text ".tran 10u 40m"
+		(exclude_from_sim no)
+		(at 25.4 190.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b3141972-3b5a-4656-bff4-3efc025f9dcd")
 	)
 	(text "entrada-dos"
 		(exclude_from_sim no)
@@ -2200,10 +2189,6 @@
 		(uuid "dd239f24-2df7-4e18-912d-08688b27e76d")
 	)
 	(no_connect
-		(at 184.15 146.05)
-		(uuid "9113dea6-4c4d-46c1-9095-a6ca59915d69")
-	)
-	(no_connect
 		(at 184.15 127)
 		(uuid "d9c8caaa-c391-40f0-8b8f-bba48928b9db")
 	)
@@ -2246,16 +2231,6 @@
 			(type default)
 		)
 		(uuid "0948f29d-dbfe-447c-a3eb-666737217845")
-	)
-	(wire
-		(pts
-			(xy 179.07 148.59) (xy 184.15 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0954adfe-f661-4ae7-956e-38cea7d7f465")
 	)
 	(wire
 		(pts
@@ -2316,16 +2291,6 @@
 			(type default)
 		)
 		(uuid "2130dd25-7281-40e0-b340-00057109f044")
-	)
-	(wire
-		(pts
-			(xy 121.92 148.59) (xy 171.45 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2301a3a4-b704-4c55-a5bd-60a519178075")
 	)
 	(wire
 		(pts
@@ -2506,16 +2471,6 @@
 			(type default)
 		)
 		(uuid "4ca13f47-7bf7-4250-b17c-cbcb40d23722")
-	)
-	(wire
-		(pts
-			(xy 184.15 151.13) (xy 181.61 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4d6ee110-4649-4a58-98c2-04afed5937bb")
 	)
 	(wire
 		(pts
@@ -2959,16 +2914,6 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 151.13) (xy 181.61 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b92bd430-234b-446d-beba-b10fcd244718")
-	)
-	(wire
-		(pts
 			(xy 66.04 144.78) (xy 66.04 146.05)
 		)
 		(stroke
@@ -3116,16 +3061,6 @@
 			(type default)
 		)
 		(uuid "dd83cb3f-9864-49da-a2fd-be01f842aad6")
-	)
-	(wire
-		(pts
-			(xy 121.92 148.59) (xy 121.92 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "de974714-7698-4ee8-a76c-4cc57e4dde55")
 	)
 	(wire
 		(pts
@@ -4665,175 +4600,6 @@
 		)
 	)
 	(symbol
-		(lib_id "suma-v-0-rev-b:R")
-		(at 175.26 148.59 90)
-		(mirror x)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5bd1a8e4-f122-43fa-887e-06711c03be4d")
-		(property "Reference" "R8"
-			(at 175.26 142.24 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1k"
-			(at 175.26 144.78 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "suma-v-0-rev-b:R0805"
-			(at 175.26 146.812 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 175.26 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 175.26 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C2907232"
-			(at 175.26 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "24da863f-a20d-4eea-a11b-dda85647bb94")
-		)
-		(pin "2"
-			(uuid "81ae42b3-e680-468c-89c3-2d03e88d7ae7")
-		)
-		(instances
-			(project "suma-v-0-rev-b"
-				(path "/76d7d92c-1316-4bcb-a187-c7124ef49ded"
-					(reference "R8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "suma-v-0-rev-b:GND")
-		(at 181.61 154.94 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6799b860-c018-48ff-bd49-290ed5c38525")
-		(property "Reference" "#PWR021"
-			(at 181.61 161.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 181.61 160.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 181.61 154.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 181.61 154.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 181.61 154.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8d67b565-6194-4de2-b1e9-8796a4bcd337")
-		)
-		(instances
-			(project "suma-v-0-rev-b"
-				(path "/76d7d92c-1316-4bcb-a187-c7124ef49ded"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "suma-v-0-rev-b:PWR_FLAG")
 		(at 36.83 26.67 0)
 		(unit 1)
@@ -5176,7 +4942,7 @@
 				)
 			)
 		)
-		(property "Footprint" "suma-v-0-rev-b:SOD-123FL_L2.8-W1.8-LS3.7-R-RD"
+		(property "Footprint" "popusintes:Diodo_SOD-123FL"
 			(at 90.17 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -5648,7 +5414,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "suma-v-0-rev-b:POT_TH_Alps_RK09K_Single_Vertical"
+		(property "Footprint" "popusintes:Potenciometro_Alpha_RD901F_Vertical"
 			(at 66.04 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -6115,7 +5881,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "suma-v-0-rev-b:POT_TH_Alps_RK09K_Single_Vertical"
+		(property "Footprint" "popusintes:Potenciometro_Alpha_RD901F_Vertical"
 			(at 66.04 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6666,132 +6432,6 @@
 		)
 	)
 	(symbol
-		(lib_id "suma-v-0-rev-b:AudioJack2_SwitchT")
-		(at 189.23 148.59 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "d7aabb23-9c9d-4971-9574-3d97ca2a6381")
-		(property "Reference" "J6"
-			(at 189.865 157.48 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AudioJack2_SwitchT"
-			(at 191.516 154.178 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "suma-v-0-rev-b:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical"
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Audio Jack, 2 Poles (Mono / TS), Switched T Pole (Normalling)"
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" "bibliotecas/spice/eurorack.lib"
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" "JACK_SALIDA"
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=s 2=tn 3=t"
-			(at 189.23 148.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "6af749c9-5c93-4edb-b9cc-395dd385dc9b")
-		)
-		(pin "2"
-			(uuid "c658c2e6-57ed-43ad-8977-7159a074972e")
-		)
-		(pin "1"
-			(uuid "8452a266-5a27-44aa-9d43-aa8ded72a806")
-		)
-		(instances
-			(project "suma-v-0-rev-b"
-				(path "/76d7d92c-1316-4bcb-a187-c7124ef49ded"
-					(reference "J6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "suma-v-0-rev-b:C")
 		(at 143.51 68.58 270)
 		(mirror x)
@@ -6916,7 +6556,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "suma-v-0-rev-b:POT_TH_Alps_RK09K_Single_Vertical"
+		(property "Footprint" "popusintes:Potenciometro_Alpha_RD901F_Vertical"
 			(at 66.04 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -7043,7 +6683,7 @@
 				)
 			)
 		)
-		(property "Footprint" "suma-v-0-rev-b:SOD-123FL_L2.8-W1.8-LS3.7-R-RD"
+		(property "Footprint" "popusintes:Diodo_SOD-123FL"
 			(at 90.17 60.96 0)
 			(hide yes)
 			(show_name no)
