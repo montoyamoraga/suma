@@ -2,7 +2,24 @@
 
 ## Revisiones
 
-- `v0.1 rev-a`: única revisión presente en el repositorio.
+- `v0.1 rev-a`: diseñada en octubre 2026 y fabricada en JLCPCB. No funciona tal como viene armada: los diodos de protección quedaron al revés y los potenciómetros también (ver abajo).
+- `v0.1 rev-b`: en desarrollo. Corrige las huellas de los diodos y de los potenciómetros, quita la salida invertida (J6 y R8) y agrega el panel. Simulada con ngspice: 4.95 Vpp de salida con 5 Vpp de entrada y el potenciómetro al máximo.
+
+### Errores conocidos de rev-a
+
+El esquemático está bien; los errores están en las huellas.
+
+- **Diodos D1 y D2 al revés.** La serigrafía de la huella marca el cátodo en el pad contrario al del símbolo, y JLCPCB montó los diodos siguiendo la serigrafía. Los rieles caen a unos ±1.5 V en vez de ±11.7 V, y la salida sale muy baja (~1 Vpp en vez de 5 Vpp) y deformada.
+- **Potenciómetros al revés.** La huella tiene los pads 1 y 3 intercambiados: girando en sentido horario baja el volumen.
+
+Para comprobarlo en una placa: con el módulo alimentado, medir el pin 8 y el pin 4 de U1 respecto a GND. Si da ~±1-2 V en vez de ~±11.7 V, los diodos están al revés.
+
+Arreglo de las placas rev-a ya armadas:
+
+- Desoldar D1 y D2 y soldarlos girados 180°. Para probar rápido, también se pueden puentear con un cable (se pierde la protección contra polaridad inversa).
+- Los potenciómetros no tienen arreglo limpio: esas placas funcionan al revés (antihorario = más volumen).
+
+El esquemático, la placa y la Bill of materials de abajo son todavía los de rev-a. La Bill of materials incluye J6 y R8, que rev-b ya no lleva.
 
 ## Esquemático y placa (v0.1 rev-a)
 
