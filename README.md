@@ -60,9 +60,9 @@ Ya está hecho en [hardware/suma-v-0-rev-b](./hardware/suma-v-0-rev-b):
 Falta:
 
 - [ ] Opcional: acercar C2 al pin 4 de U1 (−12 V); hoy está a unos 10 mm.
-- [ ] Simular rev-b en KiCad antes de mandarla a fabricar.
+- [x] Simular rev-b antes de mandarla a fabricar (ngspice, 2026-11-11, con el netlist exportado del esquemático): rieles en ±11.84 V, consumo de 2.6 mA por riel; con J1 a 5 Vpp la salida da 4.95 Vpp con RV1 al máximo, 1.98 Vpp a la mitad y 0 V al mínimo; con las tres entradas a 5 Vpp, 13.6 Vpp sin recortar; con las tres a 10 Vpp recorta en ±10.1 V, como es de esperar del TL072 con ±12 V. Con D1 y D2 invertidos se reproduce la falla de rev-a (rieles en ±1.5 V, 0.59 Vpp de salida).
 - [ ] Revisar el texto de la serigrafía en un computador con las fuentes del proyecto instaladas antes de generar los gerbers.
-- [ ] Generar gerbers, BOM y CPL de rev-b (`hardware/suma-v-0-rev-b-fab` y `hardware/suma-v-0-rev-b-pcba`).
+- [x] Generar gerbers, BOM y CPL de rev-b (`hardware/suma-v-0-rev-b-fab` y `hardware/suma-v-0-rev-b-pcba`). El BOM y el CPL se generan con [pcba-jlcpcb](https://github.com/piruetasxyz/pcba-jlcpcb), corriendo `generar_pcba.py --output ../suma-v-0-rev-b-pcba/suma-v-0-rev-b` desde `hardware/suma-v-0-rev-b`.
 - [ ] En el pedido de JLCPCB, revisar en la vista previa de montaje que la banda de D1 y D2 quede en el pad 1, el izquierdo, del lado de la barra de la serigrafía.
 - [ ] Antes de imprimir el panel, confirmar que queda bien de izquierda a derecha visto de frente (potenciómetros a la izquierda, jacks a la derecha), por ejemplo con un panel ya impreso de relo, que usa la misma convención. Después exportar el `.stl`.
 - [ ] Actualizar [kicad-retrata.yml](./kicad-retrata.yml) y [docs](./docs) para que apunten a rev-b.
