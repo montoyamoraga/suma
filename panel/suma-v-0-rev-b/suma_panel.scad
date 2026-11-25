@@ -36,20 +36,19 @@ module suma_panel() {
   JACKS_Y = [73.5, 89.42, 105.42, 121.42];
 
   difference() {
-    panel_base(ancho, alto);
+    panel_base(ancho, alto, SUMA_PANEL_PROFUNDIDAD);
 
     union() {
-      agujeros_tornillos(ancho, alto, ambos_lados = false, elipse = true);
+      agujeros_tornillos(ancho, alto, espesor = SUMA_PANEL_PROFUNDIDAD, ambos_lados = false, elipse = true);
 
       for (y = POTES_Y)
         agujero_perilla(ancho, alto, suma_px(POTES_X, ancho), suma_py(y, alto));
 
       for (y = JACKS_Y) {
         agujero_jack(ancho, alto, suma_px(JACKS_X, ancho), suma_py(y, alto));
-        rebaje_jack(ancho, alto, suma_px(JACKS_X, ancho), suma_py(y, alto));
+        rebaje_jack(ancho, alto, suma_px(JACKS_X, ancho), suma_py(y, alto),
+          SUMA_PANEL_PROFUNDIDAD, SUMA_JACK_REBAJE_HONDO);
       }
-
-      grabados_panel(SUMA_TEXTO, VERSION, ancho, alto);
     }
   }
 }
