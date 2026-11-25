@@ -20,8 +20,8 @@ Documentación, esquemático, placa y Bill of materials: <https://piruetas.xyz/s
 
 ## Revisiones
 
-- `v0.1 rev-a`: diseñada y fabricada en octubre 2026. No funciona tal como viene armada (ver errores abajo).
-- `v0.1 rev-b`: en desarrollo. Corrige las huellas de los diodos y de los potenciómetros, quita la salida invertida (J6 y R8), tiene la placa ruteada de nuevo y agrega el panel.
+- `v0.1 rev-b`: fabricada y probada en noviembre 2026. Corrige las huellas de los diodos y de los potenciómetros (en sentido horario sube el volumen), quita la salida invertida (J6 y R8), tiene la placa ruteada de nuevo y agrega el panel.
+- `v0.1 rev-a`: fabricada en octubre 2026 en JLCPCB. No funciona tal como viene armada (ver errores abajo).
 
 ### Errores conocidos de rev-a
 
@@ -45,36 +45,30 @@ La simulación muestra el circuito tal como está en el esquemático (que funcio
 
 El PCB de rev-a no se actualizó con los campos de simulación, para que siga siendo igual a lo fabricado. Por eso el DRC con paridad de esquemático muestra 12 avisos de campos `Sim.*` faltantes, que no afectan al circuito.
 
-### Pendientes para rev-b
+### Cambios en rev-b
 
-Ya está hecho en [hardware/suma-v-0-rev-b](./hardware/suma-v-0-rev-b):
+En [hardware/suma-v-0-rev-b](./hardware/suma-v-0-rev-b):
 
 - Biblioteca propia `popusintes` ([bibliotecas/popusintes.pretty](./hardware/suma-v-0-rev-b/bibliotecas/popusintes.pretty) y [bibliotecas/popusintes.3dshapes](./hardware/suma-v-0-rev-b/bibliotecas/popusintes.3dshapes)), autocontenida con sus modelos 3D, con dos huellas corregidas:
   - `Diodo_SOD-123FL`: misma geometría y serigrafía que la huella de EasyEDA, con los pads 1 y 2 intercambiados para que el pad 1 (cátodo, K) quede del lado de la barra. Así la serigrafía, los números de pad y la huella de JLCPCB coinciden, y la rotación en el CPL sigue en 0.
   - `Potenciometro_Alpha_RD901F_Vertical`: misma geometría que la huella BYOM (que calza bien con los potenciómetros), con los pads 1 y 3 intercambiados: visto de frente con las patas hacia abajo, pad 1 = pata izquierda (antihorario), pad 3 = pata derecha (horario).
 - Sin salida invertida: se quitaron J6 y R8.
 - Placa ruteada de nuevo: DRC sin errores, sin conexiones pendientes y sin diferencias con el esquemático.
-- Todo renombrado de rev-a a rev-b, incluida la carpeta de salida de los gerbers (`../suma-v-0-rev-b-fab/`), para no pisar los archivos de rev-a.
+- Todo renombrado de rev-a a rev-b, incluida la carpeta de los gerbers ([hardware/suma-v-0-rev-b-fab](./hardware/suma-v-0-rev-b-fab)), para no pisar los archivos de rev-a.
 - Panel en [panel/suma-v-0-rev-b](./panel/suma-v-0-rev-b), con los agujeros de los potenciómetros y jacks en las mismas posiciones que la placa.
+- Simulada antes de fabricar (ngspice, 2026-11-11, con el netlist exportado del esquemático): rieles en ±11.84 V, consumo de 2.6 mA por riel; con J1 a 5 Vpp la salida da 4.95 Vpp con RV1 al máximo, 1.98 Vpp a la mitad y 0 V al mínimo; con las tres entradas a 5 Vpp, 13.6 Vpp sin recortar; con las tres a 10 Vpp recorta en ±10.1 V, como es de esperar del TL072 con ±12 V. Con D1 y D2 invertidos se reproduce la falla de rev-a (rieles en ±1.5 V, 0.59 Vpp de salida).
+- BOM y CPL generados con [pcba-jlcpcb](https://github.com/piruetasxyz/pcba-jlcpcb), corriendo `generar_pcba.py --output ../suma-v-0-rev-b-pcba/suma-v-0-rev-b` desde `hardware/suma-v-0-rev-b`.
 
-Falta:
+### Pendiente para una próxima revisión
 
 - [ ] Opcional: acercar C2 al pin 4 de U1 (−12 V); hoy está a unos 10 mm.
-- [x] Simular rev-b antes de mandarla a fabricar (ngspice, 2026-11-11, con el netlist exportado del esquemático): rieles en ±11.84 V, consumo de 2.6 mA por riel; con J1 a 5 Vpp la salida da 4.95 Vpp con RV1 al máximo, 1.98 Vpp a la mitad y 0 V al mínimo; con las tres entradas a 5 Vpp, 13.6 Vpp sin recortar; con las tres a 10 Vpp recorta en ±10.1 V, como es de esperar del TL072 con ±12 V. Con D1 y D2 invertidos se reproduce la falla de rev-a (rieles en ±1.5 V, 0.59 Vpp de salida).
-- [ ] Revisar el texto de la serigrafía en un computador con las fuentes del proyecto instaladas antes de generar los gerbers.
-- [x] Generar gerbers, BOM y CPL de rev-b (`hardware/suma-v-0-rev-b-fab` y `hardware/suma-v-0-rev-b-pcba`). El BOM y el CPL se generan con [pcba-jlcpcb](https://github.com/piruetasxyz/pcba-jlcpcb), corriendo `generar_pcba.py --output ../suma-v-0-rev-b-pcba/suma-v-0-rev-b` desde `hardware/suma-v-0-rev-b`.
-- [ ] En el pedido de JLCPCB, revisar en la vista previa de montaje que la banda de D1 y D2 quede en el pad 1, el izquierdo, del lado de la barra de la serigrafía.
-- [ ] Antes de imprimir el panel, confirmar que queda bien de izquierda a derecha visto de frente (potenciómetros a la izquierda, jacks a la derecha), por ejemplo con un panel ya impreso de relo, que usa la misma convención. Después exportar el `.stl`.
-- [ ] Actualizar [kicad-retrata.yml](./kicad-retrata.yml) y [docs](./docs) para que apunten a rev-b.
-- [ ] Revisar otros módulos de popusintes que usen las mismas huellas de EasyEDA y BYOM: atenu rev-a usa la huella BYOM del potenciómetro con el mismo cableado que suma, así que tiene el mismo error.
 
 ## Estructura del repositorio
 
-- [hardware/suma-v-0-rev-a](./hardware/suma-v-0-rev-a): proyecto de KiCad (esquemático y placa), los archivos fuente del diseño.
-- [hardware/suma-v-0-rev-a/bibliotecas](./hardware/suma-v-0-rev-a/bibliotecas): símbolos, huellas y modelos 3D usados por el proyecto. Van en el repositorio para que el proyecto de KiCad se abra sin instalar bibliotecas adicionales.
-- [hardware/suma-v-0-rev-a-fab](./hardware/suma-v-0-rev-a-fab): gerbers y archivos de taladrado para fabricar la placa.
-- [hardware/suma-v-0-rev-a-pcba](./hardware/suma-v-0-rev-a-pcba): lista de componentes y archivo de posiciones para armado en JLCPCB.
-- [hardware/suma-v-0-rev-b](./hardware/suma-v-0-rev-b): proyecto de KiCad de rev-b (en desarrollo). Sus [bibliotecas](./hardware/suma-v-0-rev-b/bibliotecas) incluyen la biblioteca propia `popusintes` con las huellas corregidas del diodo y del potenciómetro, y los modelos SPICE en `spice/`.
+- [hardware/suma-v-0-rev-b](./hardware/suma-v-0-rev-b): proyecto de KiCad (esquemático y placa) de la revisión actual, los archivos fuente del diseño. Sus [bibliotecas](./hardware/suma-v-0-rev-b/bibliotecas) incluyen símbolos, huellas y modelos 3D, la biblioteca propia `popusintes` con las huellas corregidas del diodo y del potenciómetro, y los modelos SPICE en `spice/`. Van en el repositorio para que el proyecto de KiCad se abra sin instalar bibliotecas adicionales.
+- [hardware/suma-v-0-rev-b-fab](./hardware/suma-v-0-rev-b-fab): gerbers y archivos de taladrado para fabricar la placa de la revisión actual.
+- [hardware/suma-v-0-rev-b-pcba](./hardware/suma-v-0-rev-b-pcba): lista de componentes y archivo de posiciones para armado en JLCPCB de la revisión actual.
+- [hardware/suma-v-0-rev-a](./hardware/suma-v-0-rev-a), [hardware/suma-v-0-rev-a-fab](./hardware/suma-v-0-rev-a-fab) y [hardware/suma-v-0-rev-a-pcba](./hardware/suma-v-0-rev-a-pcba): revisión anterior, con los diodos y los potenciómetros al revés.
 - [panel/suma-v-0-rev-b](./panel/suma-v-0-rev-b): archivos fuente de OpenSCAD del panel, con los agujeros de los potenciómetros y jacks de la placa rev-b. Se abre [suma.scad](./panel/suma-v-0-rev-b/suma.scad); la versión grabada en el panel está en [versiones.scad](./panel/suma-v-0-rev-b/versiones.scad).
 - [terceros/popusintes-cajas-paneles](https://github.com/piruetasxyz/popusintes-cajas-paneles): submódulo de git con las constantes eurorack y las funciones y módulos de OpenSCAD compartidos entre las cajas y paneles de popusintes. Para clonar el repositorio con el submódulo: `git clone --recursive https://github.com/piruetasxyz/suma.git`, o `git submodule update --init` si ya estaba clonado.
 - [docs](./docs): documentación, publicada en <https://piruetas.xyz/suma/>. Las capturas del esquemático y de la placa, y la tabla de Bill of materials, las genera [kicad-retrata](https://github.com/piruetasxyz/kicad-retrata) en cada push (ver [kicad-retrata.yml](./kicad-retrata.yml)).
@@ -82,7 +76,7 @@ Falta:
 
 ## Fabricación
 
-Como es hardware de código abierto, los archivos fuente de KiCad, los archivos de fabricación de [hardware/suma-v-0-rev-a-fab](./hardware/suma-v-0-rev-a-fab), los de armado de [hardware/suma-v-0-rev-a-pcba](./hardware/suma-v-0-rev-a-pcba) y la [Bill of materials](https://piruetas.xyz/suma/#bill-of-materials-v01-rev-a) están publicados para que cualquiera pueda estudiar, modificar y fabricar el diseño. piruetas no da soporte para unidades fabricadas o armadas por terceros.
+Como es hardware de código abierto, los archivos fuente de KiCad, los archivos de fabricación de [hardware/suma-v-0-rev-b-fab](./hardware/suma-v-0-rev-b-fab), los de armado de [hardware/suma-v-0-rev-b-pcba](./hardware/suma-v-0-rev-b-pcba) y la [Bill of materials](https://piruetas.xyz/suma/#bill-of-materials-v01-rev-b) están publicados para que cualquiera pueda estudiar, modificar y fabricar el diseño. piruetas no da soporte para unidades fabricadas o armadas por terceros.
 
 ## Créditos
 

@@ -23,19 +23,6 @@ SUMA_PCB_ALTO = 100;
 function suma_px(x_pcb, ancho) = (x_pcb - SUMA_PCB_X0 + (ancho - SUMA_PCB_ANCHO) / 2) / ancho;
 function suma_py(y_pcb, alto) = (y_pcb - SUMA_PCB_Y0 + (alto - SUMA_PCB_ALTO) / 2) / alto;
 
-// rebaje circular en la cara frontal (+z) alrededor de cada jack, para
-// que la tuerca baje y alcance mas rosca. el panel queda con
-// PANEL_PROFUNDIDAD - JACK_REBAJE_HONDO de espesor en esa zona.
-// mismas medidas que en el panel de atenu
-JACK_REBAJE_DIAMETRO = 10;
-JACK_REBAJE_HONDO = 1.2;
-
-module rebaje_jack(ancho, alto, px, py) {
-  p = posicion(ancho, alto, px, py);
-  translate([p[0], p[1], PANEL_PROFUNDIDAD - JACK_REBAJE_HONDO])
-    cylinder(h = JACK_REBAJE_HONDO + 1, d = JACK_REBAJE_DIAMETRO, $fn = 50);
-}
-
 module suma_panel() {
   ancho = MODULO_ANCHO * SUMA_HP;
   alto  = MODULO_ALTURA_3U;
